@@ -29,3 +29,13 @@ class Channel:
     @classmethod
     def get_service(cls):
         return build('youtube', 'v3', developerKey=api_key)
+
+    def to_json(self, file_name):
+        with open(file_name, 'w', encoding="utf-8") as f:
+            json.dump({
+                            'title': self.title,
+                            'description': self.description,
+                            'url': self.url, 'subscriber_count': self.subscriber_count,
+                            'video_count': self.video_count,
+                            'view_count': self.view_count
+                            }, f)
